@@ -5,21 +5,16 @@ jQuery(function($){
     $('#recipe_rating').on('rated', function(){
         $(this).rateit('readonly', true);
 
-
-
         var formObj = {
             action: 'r_rate_recipe',
             rid:    $(this).data('rid'),
             rating: $(this).rateit('value')
         };
 
-        console.log(formObj);
-
         $.post( recipe_obj.ajax_url, formObj, function(data){
             console.log(data);
         });
     })
-    
 	
     // For short code (create recipe [user side])
        
@@ -42,8 +37,6 @@ jQuery(function($){
         };
         
         $.post( recipe_obj.ajax_url, formObj, function(data){
-            
-            console.log(data);
             
             if (data.status == 2) {
                 $('#recipeStatus').html('<div class="alert alert-success">Recipe submitted successfully! An Admin will approve it shortly.</div>');
